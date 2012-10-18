@@ -1,0 +1,81 @@
+@charset "utf-8";
+/*-------reset-------*/
+body, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ul, ol, li, th, td, img, input {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: 12px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+img {
+	border: 0 none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+}
+p, ul, li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	outline: none;
+}
+a:hover {
+	text-decoration: none;
+}
+.clearfix:after {
+	content: " ";
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+.clearfix {
+	zoom: 1;
+}
+.clearleft {
+	clear: both;
+	height: 1px;
+	line-height: 1px;
+	overflow: hidden;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #FFF;
+}
+html {
+	overflow-x: hidden;
+}
+
+.x-banner{ width:800px; height:300px; margin:20px auto;}
+.x-banner-item{ width:800px; overflow:hidden; height:300px;position:relative;background:#999;}
+.x-banner-ul{ position:absolute; z-index:10;width:800px; height:300px;left:0;top:0;}
+.x-banner-ul li{cursor:pointer;width:800px;height:300px; vertical-align:top;overflow:hidden;font-size:20px; background:#999;position:relative;}
+.x-bannner-ico{position:absolute;z-index:20; right:0; top:6px;}
+.x-bannner-ico li{ cursor:pointer;width:20px; height:54px; line-height:54px; text-align:center; background:#FFF; border:1px solid #000; margin-bottom:2px;}
+.x-bannner-ico li.on{ color:#FFF; background:#60C;}
+
+.x-banner-list-item{ position:absolute; color:#FFF;}
+
+.x-banner-list1 .x-banner-list1-1{width:800px; height:300px;background:#C00; left:0;}
+
+.x-banner-list2 .x-banner-list2-1{width:470px; height:300px;background:#900; left:0;}
+.x-banner-list2 .x-banner-list2-2{width:330px; height:300px;background:#930; right:0;}
+
+.x-banner-list3 .x-banner-list3-1{width:470px; height:300px;background:#900;left:0;}
+.x-banner-list3 .x-banner-list3-2{width:330px; height:150px;background:#930; right:0;}
+.x-banner-list3 .x-banner-list3-3{width:330px; height:150px;background:#960;top:150px; right:0;}
+
+.x-banner-list4 .x-banner-list4-1{width:470px; height:300px;background:#900;left:0;}
+.x-banner-list4 .x-banner-list4-2{width:330px; height:100px;background:#930; right:0;}
+.x-banner-list4 .x-banner-list4-3{width:330px; height:100px;background:#960;top:100px; right:0;}
+.x-banner-list4 .x-banner-list4-4{width:330px; height:100px;background:#9C0;top:200px; right:0;}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>图片无缝滚动,带自动轮播版</title>
+<meta name="description" content="web前端，杭州小白的个人博客，小白的个人博客" />
+<meta name="keywords" content="web前端，杭州小白，小白"  />
+<link href="asset/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p style="height:40px; line-height:40px; text-align:center"><a href="http://www.xiaobai8.com" title="杭州-小白">回到首页</a></p>
+<div class="s-box-cnt">
+    <div class="s-box-item">
+        <div class="s-box-item-title">
+            <p>Over <span class="s-box-c-white">$10</span> Gift District</p>
+        </div>
+        <div class="s-box-item-list">
+            <div class="s-box-ul-left ul-left J-prev01"></div>
+            <div class="s-box-ul">
+                <ul class="clearfix J-ul01">
+                    <li><a title="img01" href="#" target="_blank"><img border="0" title="img01" alt="img01" src="images/20121016.jpg"></a><p>标题1</p></li>
+                    <li><a title="img02" href="#" target="_blank"><img border="0" title="img02" alt="img02" src="images/20121016.jpg"></a><p>标题2</p></li>
+                    <li><a title="img03" href="#" target="_blank"><img border="0" title="img03" alt="img03" src="images/20121016.jpg"></a><p>标题3</p></li>
+                    <li><a title="img04" href="#" target="_blank"><img border="0" title="img04" alt="img04" src="images/20121016.jpg"></a><p>标题4</p></li>
+                    <li><a title="img05" href="#" target="_blank"><img border="0" title="img05" alt="img05" src="images/20121016.jpg"></a><p>标题5</p></li>
+                    <li><a title="img06" href="#" target="_blank"><img border="0" title="img06" alt="img06" src="images/20121016.jpg"></a><p>标题6</p></li>
+                    <li><a title="img07" href="#" target="_blank"><img border="0" title="img07" alt="img07" src="images/20121016.jpg"></a><p>标题7</p></li>
+                    <li><a title="img08" href="#" target="_blank"><img border="0" title="img08" alt="img08" src="images/20121016.jpg"></a><p>标题8</p></li>
+                </ul>
+            </div>
+            <div class="s-box-ul-right ul-right J-right01"></div>
+        </div>
+    </div>
+    <div class="s-box-item">
+        <div class="s-box-item-title">
+            <p>Over <span class="s-box-c-white">$20</span> Gift District</p>
+        </div>
+        <div class="s-box-item-list">
+            <div class="s-box-ul-left ul-left J-prev02"></div>
+            <div class="s-box-ul">
+                <ul class="clearfix J-ul02">
+                    <li><a title="img01" href="#" target="_blank"><img border="0" title="img01" alt="img01" src="images/20121016.jpg"></a><p>标题1</p></li>
+                    <li><a title="img02" href="#" target="_blank"><img border="0" title="img02" alt="img02" src="images/20121016.jpg"></a><p>标题2</p></li>
+                    <li><a title="img03" href="#" target="_blank"><img border="0" title="img03" alt="img03" src="images/20121016.jpg"></a><p>标题3</p></li>
+                    <li><a title="img04" href="#" target="_blank"><img border="0" title="img04" alt="img04" src="images/20121016.jpg"></a><p>标题4</p></li>
+                    <li><a title="img05" href="#" target="_blank"><img border="0" title="img05" alt="img05" src="images/20121016.jpg"></a><p>标题5</p></li>
+                    <li><a title="img06" href="#" target="_blank"><img border="0" title="img06" alt="img06" src="images/20121016.jpg"></a><p>标题6</p></li>
+                    <li><a title="img07" href="#" target="_blank"><img border="0" title="img07" alt="img07" src="images/20121016.jpg"></a><p>标题7</p></li>
+                    <li><a title="img08" href="#" target="_blank"><img border="0" title="img08" alt="img08" src="images/20121016.jpg"></a><p>标题8</p></li>
+                    <li><a title="img09" href="#" target="_blank"><img border="0" title="img09" alt="img09" src="images/20121016.jpg"></a><p>标题9</p></li>
+                    <li><a title="img10" href="#" target="_blank"><img border="0" title="img10" alt="img10" src="images/20121016.jpg"></a><p>标题10</p></li>
+                </ul>
+            </div>
+            <div class="s-box-ul-right ul-right J-right02"></div>
+        </div>
+    </div> 
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+<script>!window.jQuery && document.write("<script src=\"asset/jquery.js\"><\/script>")</script> 
+<script type="text/javascript" src="asset/main.js"></script>
+<script type="text/javascript">
+var test1=new imgScroll();
+test1.init({moveUl:".J-ul01",moveTime:500,moveNum:4,prev:".J-prev01",next:".J-right01"});
+var test2=new imgScroll();
+test2.init({moveUl:".J-ul02",prev:".J-prev02",next:".J-right02",isAuto:true});
+</script>
+
+<script type="text/javascript"> 
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-25741319-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0a4de95bca0e50c8c1568236e66ece80' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

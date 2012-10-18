@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"> 
+<head> 
+<title>焦点图轮播 主要是为了在手机上面可以手指滑动的效果</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="web前端，杭州小白的个人博客，小白的个人博客" />
+<meta name="keywords" content="web前端，杭州小白，小白"  />
+<link href="asset/style.css" rel="stylesheet" type="text/css" /> 
+</head>
+<body>
+<p style="height:40px; line-height:40px; text-align:center"><a href="http://www.xiaobai8.com" title="杭州-小白">回到首页</a></p>
+
+<div class="wrapper">
+    <div class="module">
+    	<div class="img_ad">
+        	<div class="img_wrap">
+                <ul id="J-Touch">
+                    <li><a href="#"><img src="images/ad20120622.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                    <li><a href="#"><img src="images/ad20120701.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                    <li><a href="#"><img src="images/ad20120716.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                    <li><a href="#"><img src="images/ad20120701.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                    <li><a href="#"><img src="images/ad20120716.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="imgFlashIco">
+            <ul id="J-Touch-ico">
+                <li class="on">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+    <div class="module">
+    	<div class="img_ad">
+        	<div class="img_wrap">
+                <ul id="J-Touch1">
+                    <li><a href="#"><img src="images/ad20120622.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                    <li><a href="#"><img src="images/ad20120701.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                    <li><a href="#"><img src="images/ad20120716.jpg" alt="Fall in love with fall Autumn new 10% off" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="imgFlashIco">
+            <ul id="J-Touch-ico1">
+                <li class="on">1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+    </div> 
+</div>
+<script src="asset/jquery-1.7.2.min.js"></script>
+<script src="asset/imgScroll.js"></script>
+<script>
+var test=new mobileImgScroll();
+test.init();
+
+var test1=new mobileImgScroll();
+test1.init({
+	Touch:"#J-Touch1",
+	TouchIco:"#J-Touch-ico1",
+	Width:320,
+	Current:"on",
+	isAuto:true,
+	offSet:3000
+});
+</script>
+
+<script type="text/javascript"> 
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-25741319-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0a4de95bca0e50c8c1568236e66ece80' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

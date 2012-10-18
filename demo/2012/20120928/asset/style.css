@@ -1,0 +1,27 @@
+@charset "utf-8";
+/*--------------
+lastTime : 2012.09.28
+tags : img_ad | reset
+----------------*/
+/*------reset-------*/
+body, h1, h2, h3, h4, h5, h6, p,
+dl, dt, dd, ul, ol, li, th, td, img, input{border:medium none;margin: 0;padding: 0;}
+body{ font-size:14px; font-family:HelveticaNeue,Helvetica,sans-serif;}
+input{ font-size:16px;}
+img{ border:0 none;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+p,ul,li{list-style:none;}
+a,a:link{color:#19446f;text-decoration:none; outline:none;}
+a:hover{text-decoration:none; color:#de0003;}
+header, nav, section, footer{ display:block;}
+/*------img_ad-------*/
+.img_ad{ height:188px; width:320px; margin:0 auto; overflow:hidden;position:relative;}
+.img_ad img{width:320px; height:188px;}
+.img_ad_titleP1{ text-transform:uppercase; margin-right:20px;}
+.img_wrap{position:absolute;left:0; top:0;height:188px; width:320px; background:#666;}
+.img_wrap ul{position:absolute; left:0px;}
+.img_wrap ul li{ float:left;display:inline;height:188px; width:320px;}
+.imgFlashIco{width:144px;overflow:hidden; margin:0 auto; position:relative; top:-30px; background:url(../images/ico_base.png) no-repeat -336px 6px; }
+.imgFlashIco li{ float:left; font-weight:bold;  width:20px; font-size:14px; margin-top:2px;margin-left:6px; text-align:center;line-height:26px;height:26px; cursor:pointer; color:#FFF;}
+.imgFlashIco li.on{ color:#000;}
+.imgFlashSpan{ display:inline-block; height:26px;line-height:26px;  color:#F00;overflow:hidden;margin-left:8px; cursor:pointer;}

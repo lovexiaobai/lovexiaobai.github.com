@@ -1,0 +1,128 @@
+@charset "utf-8";
+/*-------reset-------*/
+body, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ul, ol, li, th, td, img, input {
+	border: medium none;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: 12px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+img {
+	border: 0 none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+}
+p, ul, li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	outline: none;
+}
+a:hover {
+	text-decoration: none;
+}
+.clearfix:after {
+	content: " ";
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+.clearfix {
+	zoom: 1;
+}
+.clearleft {
+	clear: both;
+	height: 1px;
+	line-height: 1px;
+	overflow: hidden;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #FFF;
+}
+html {
+	overflow-x: hidden;
+}
+.s-box-cnt {
+	border: 1px solid #8b88a9;
+	width: 978px;
+	margin: 0 auto;
+	margin-top: 10px;
+	position: relative;
+	min-height: 200px;
+}
+.s-box-item-title p {
+	font-weight: bold;
+	width: 200px;
+	height: 36px;
+	line-height: 36px;
+	color: #ff9a00;
+	margin-top: 20px;
+	margin-left: 20px;
+	text-align: center;
+	font-size: 16px;
+}
+.s-box-item-title .s-box-c-white {
+	color:#000 ;
+}
+.s-box-item {
+	height: 280px;
+	margin-bottom: 24px;
+}
+.s-box-item-list {
+	height: 220px;
+	margin-top: 30px;
+	width: 980px;
+	overflow: hidden;
+	position: relative;
+}
+.s-box-item-list .s-box-ul {
+	width: 812px;
+	overflow: hidden;
+	position: absolute;
+	left: 80px;
+}
+.s-box-item-list ul {
+	width: 2000px;
+	position: relative;
+}
+.s-box-item-list li {
+	height: 220px;
+	width: 131px;
+	float: left;
+	display: inline;
+	margin-right: 39px;
+}
+.s-box-ul-left {
+	position: absolute;
+	left: 20px;
+	cursor: pointer;
+}
+.s-box-ul-right {
+	position: absolute;
+	right: 20px;
+	cursor: pointer;
+}
+.ul-left {
+	width: 58px;
+	height: 193px;
+	background: url(../images/W3Cfuns_allbgs2.png) no-repeat 0px 0px;
+}
+.ul-right {
+	width: 58px;
+	height: 193px;
+	background: url(../images/W3Cfuns_allbgs2.png) no-repeat 0px -193px;
+}
