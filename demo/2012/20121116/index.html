@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>唯一选择下拉菜单</title>
+<meta name="description" content="web前端，杭州小白的个人博客，小白的个人博客" />
+<meta name="keywords" content="web前端，杭州小白，小白"  />
+</head>
+<body>
+<p style="height:40px; line-height:40px; text-align:center"><a href="http://www.xiaobai8.com" title="杭州-小白">回到首页</a></p>
+<select class="bonus-select" id="bonus_S-001" name="bonus_S-001" title="30">
+    <option value="0-0" id="0-0" bonusmin="0">Please select...</option>
+    <option value="512110711523210-3.00" id="512110711523210" bonusmin="10">512110711523210</option>
+    <option value="512110711524720-3.00" id="512110711524720" bonusmin="20">512110711524720</option>
+    <option value="512110711524730-3.00" id="512110711524730" bonusmin="20">512110711524730</option>
+    <option value="512110711524740-3.00" id="512110711524740" bonusmin="100">512110711524740</option>
+    <option value="512110711524750-3.00" id="512110711524750" bonusmin="20">512110711524750</option>
+    <option value="512110711524760-3.00" id="512110711524760" bonusmin="20">512110711524760</option>
+    <option value="512110711524770-3.00" id="512110711524770" bonusmin="100">512110711524770</option>
+    <option value="512110711524780-3.00" id="512110711524780" bonusmin="100">512110711524780</option>
+</select>
+<select class="bonus-select" id="bonus_S-002" name="bonus_S-002" title="110">
+	<option value="0-0" id="0-0" bonusmin="0">Please select...</option>
+    <option value="512110711523210-3.00" id="512110711523210" bonusmin="10">512110711523210</option>
+    <option value="512110711524720-3.00" id="512110711524720" bonusmin="20">512110711524720</option>
+    <option value="512110711524730-3.00" id="512110711524730" bonusmin="20">512110711524730</option>
+    <option value="512110711524740-3.00" id="512110711524740" bonusmin="100">512110711524740</option>
+    <option value="512110711524750-3.00" id="512110711524750" bonusmin="20">512110711524750</option>
+    <option value="512110711524760-3.00" id="512110711524760" bonusmin="20">512110711524760</option>
+    <option value="512110711524770-3.00" id="512110711524770" bonusmin="100">512110711524770</option>
+    <option value="512110711524780-3.00" id="512110711524780" bonusmin="100">512110711524780</option>
+</select>
+<select class="bonus-select" id="bonus_S-003" name="bonus_S-003" title="30">
+	<option value="0-0" id="0-0" bonusmin="0">Please select...</option>
+    <option value="512110711523210-3.00" id="512110711523210" bonusmin="10">512110711523210</option>
+    <option value="512110711524720-3.00" id="512110711524720" bonusmin="20">512110711524720</option>
+    <option value="512110711524730-3.00" id="512110711524730" bonusmin="20">512110711524730</option>
+    <option value="512110711524740-3.00" id="512110711524740" bonusmin="100">512110711524740</option>
+    <option value="512110711524750-3.00" id="512110711524750" bonusmin="20">512110711524750</option>
+    <option value="512110711524760-3.00" id="512110711524760" bonusmin="20">512110711524760</option>
+    <option value="512110711524770-3.00" id="512110711524770" bonusmin="100">512110711524770</option>
+    <option value="512110711524780-3.00" id="512110711524780" bonusmin="100">512110711524780</option>
+</select>
+<select class="bonus-select" id="bonus_S-004" name="bonus_S-004" title="10">
+	<option value="0-0" id="0-0" bonusmin="0">Please select...</option>
+    <option value="512110711523210-3.00" id="512110711523210" bonusmin="10">512110711523210</option>
+    <option value="512110711524720-3.00" id="512110711524720" bonusmin="20">512110711524720</option>
+    <option value="512110711524730-3.00" id="512110711524730" bonusmin="20">512110711524730</option>
+    <option value="512110711524740-3.00" id="512110711524740" bonusmin="100">512110711524740</option>
+    <option value="512110711524750-3.00" id="512110711524750" bonusmin="20">512110711524750</option>
+    <option value="512110711524760-3.00" id="512110711524760" bonusmin="20">512110711524760</option>
+    <option value="512110711524770-3.00" id="512110711524770" bonusmin="100">512110711524770</option>
+    <option value="512110711524780-3.00" id="512110711524780" bonusmin="100">512110711524780</option>
+</select>
+<script src="jquery-1.7.2.min.js"></script>
+<script>
+/*红包数据格式*/
+var bonusData=[
+	["value:0-0,id:0-0,txt:Please select...,bonusmin:0"],
+	["value:512110711523210-3.00,id:512110711523210,txt:512110711523210,bonusmin:10",
+	"value:512110711524720-3.00,id:512110711524720,txt:512110711524720,bonusmin:20",
+	"value:512110711524730-3.00,id:512110711524730,txt:512110711524730,bonusmin:20",
+	"value:512110711524740-3.00,id:512110711524740,txt:512110711524740,bonusmin:100",
+	"value:512110711524750-3.00,id:512110711524750,txt:512110711524750,bonusmin:20",
+	"value:512110711524760-3.00,id:512110711524760,txt:512110711524760,bonusmin:20",
+	"value:512110711524770-3.00,id:512110711524770,txt:512110711524770,bonusmin:100",
+	"value:512110711524780-3.00,id:512110711524780,txt:512110711524780,bonusmin:100"]
+];
+var $bonus=$(".bonus-select");
+$bonus.bind("change",function(){
+	selectBonus();
+});
+/*比较两个数组去掉重复的,新的与旧的比较*/
+function delArrRepeat(newArr,oldArr){
+	var temp=[];
+	var tempArr=[];
+	for(var i=0,len=oldArr.length;i<len;i++)
+	{
+		temp[oldArr[i]]= true;
+	}
+	for(var i=0,len=newArr.length;i<len;i++)
+	{
+		if(!temp[newArr[i]])
+		{
+			tempArr.push(newArr[i]);
+		}
+	}
+	return tempArr;
+}
+/*改变的函数*/
+function selectBonus(){
+	var tempBonus=[];
+	$bonus.each(function(i) {
+		var $this=$(this),
+			this_val=$this.find("option:selected").val(),
+			this_id=$this.find("option:selected").attr("id"),
+			this_txt=$this.find("option:selected").html(),
+			this_min=$this.find("option:selected").attr("bonusmin");
+		var htmlDefault='value:'+this_val+',id:'+this_id+',txt:'+this_txt+',bonusmin:'+this_min;
+		tempBonus.push(htmlDefault);
+    });
+	var tempLast=delArrRepeat(bonusData[1],tempBonus);
+	$bonus.each(function(i) {
+		var $this=$(this),
+			tempArr=tempBonus[i].split(","),
+			tempArr1=(tempArr[0].split(":"))[1],
+			tempArr2=(tempArr[1].split(":"))[1],
+			tempArr3=(tempArr[2].split(":"))[1],
+			tempArr4=(tempArr[3].split(":"))[1];
+		var html='';
+		html+='<option value="0-0" id="0-0" bonusmin="0">Please select...</option>';
+		for(var k=0,len=tempLast.length;k<len;k++)
+		{
+			var ktempArr=tempLast[k].split(","),
+				ktempArr1=(ktempArr[0].split(":"))[1],
+				ktempArr2=(ktempArr[1].split(":"))[1],
+				ktempArr3=(ktempArr[2].split(":"))[1],
+				ktempArr4=(ktempArr[3].split(":"))[1];
+				if(ktempArr1!="0-0")
+				{
+					/*判断红包使用金额最小值*/
+					if(parseInt($this.attr("title"),10)>=parseInt(ktempArr4,10))
+					{
+						html+='<option value="'+ktempArr1+'" id="'+ktempArr2+'" bonusmin="'+ktempArr4+'">'+ktempArr3+'</option>';
+					}
+				}
+		}
+		if(tempArr1!="0-0")
+		{
+			html+='<option value="'+tempArr1+'" id="'+tempArr2+'" bonusmin="'+tempArr4+'" selected="selected">'+tempArr3+'</option>';
+		}
+		$this.html(html);
+    });
+}
+</script>
+<script type="text/javascript"> 
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-25741319-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0a4de95bca0e50c8c1568236e66ece80' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
