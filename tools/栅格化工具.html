@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>列宽计算工具</title>
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write(unescape('%3Cscript src="asset/js/jquery-1.9.1.min.js"%3E%3C/script%3E'))</script>
+<style type="text/css">
+*{margin:0;padding:0;}
+body{ 
+	font-family:Verdana, Geneva, sans-serif; 
+	font-size:100%; 
+	font-size: 16px;
+	font-size: 1em;
+}
+#wrapper{width:100%; margin:0 auto;}
+.layout{ width:90%; margin:0 5%; min-width:500px; padding-bottom: 30px;}
+.layout label{ display:inline-block; width:90px; text-align:right; padding-right:1%;}
+p{ line-height:2em;}
+a{ color:#09F; text-decoration:none;}
+a:hover{ color:#09C;}
+input[type=button]{
+	padding:2px 4px;
+}
+/* 清理浮动 */
+.fn-clear:before, .fn-clear:after,.clearfix:before,.clearfix:after{
+	content: "";
+	display: table;
+}
+.fn-clear:after,.clearfix:after {
+	clear: both;
+}
+.fn-clear,.clearfix {
+	zoom: 1; /* for IE6 IE7 */
+}
+
+.grid{margin-bottom:10px;}
+.grid .gutter_outer,.grid .column,.grid .gutter{ float:left;height:30px;}
+.grid .gutter_outer{ background:rgba(0,0,0,0.8);}
+.grid .column{ background:rgba(173,173,173,1);}
+.grid .gutter{ background:rgba(229,229,229,0.6);}
+
+.tips span{ display:inline-block; width:120px;}
+input.on{ border:1px solid #C36;}
+
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+    <div class="layout">
+        <p style="display:none;">参考: <a href="http://grids.heroku.com" target="_blank">http://grids.heroku.com</a></p>
+        <p>请用正常点的数字,eg:页面宽度 1200,列表宽度200, 留白 0 </p>
+        <p><label for="webWidth">页面宽度:</label><input id="webWidth" type="text" value="0" /></p>
+        <p><label for="columnsWidth">列表宽度:</label><input id="columnsWidth" type="text" value="0" /> 或<label for="columnsWidth">列表个数:</label><input id="columnsNumber" type="text" value="0" /></p>
+        <p><label for="gutterWidth">留白宽度:</label><input id="gutterWidth" type="text" value="0" /></p>
+        <p><label for="submit"></label><input type="button" value="给我算" id="submit" /></p>
+		<p></p>
+		<div id="getMoreHtml"></div>
+		<p></p>
+        <div id="box"></div>
+    </div>
+</div>
+
+<!--新增加栅格系统模板 start-->
+<style>
+	/**
+	* 这里的栅格化布局样式针对宽度排版，不栅格化高。
+	* 如要栅格化高，那可是简单多了，稍微加上就行了。
+	*/
+	/* 栅格化布局样式 */
+	.grid2-wrap-main {
+		width: 640px;
+		background-color: rgba(0, 0, 0, 0.8);
+		overflow: hidden;
+	}
+
+	.grid2-wrap {
+		width: 608px;
+		margin: 0 auto;
+		overflow: hidden;
+		background-color: rgb(229, 229, 229);
+	}
+
+	.grid-item {
+		margin-right: 16px;
+		float: left;
+		display: inline-block;
+	}
+
+	.grid-item.grid-fixed {
+		margin-right: 0;
+	}
+
+	.grid-1 {
+		width: 140px;
+	}
+
+	.grid-2 {
+		width: 296px;
+	}
+
+	.grid-3 {
+		width: 452px;
+	}
+
+	.grid-4 {
+		width: 608px;
+	}
+
+	/* End 栅格化布局样式 */
+	.grid2-wrap-title {
+		text-align: left;
+		line-height: 18px;
+		font-size: 14px;
+		color: #E07000;
+	}
+
+	.row {
+		height: 60px;
+	}
+
+	.grid-item {
+		background: #E07000;
+		height: 60px;
+	}
+
+	.grid-item.r {
+		background: #B6D07C;
+	}
+
+	.grid-item .txt {
+		position: relative;
+		top: 10px;
+		left: 10px;
+	}
+
+	.sp {
+		float: left;
+		background: #FFF;
+		height: 16px;
+		overflow: hidden;
+		width: 100%;
+		clear: both;
+	}
+
+	.more-btn {
+		font-size: 15px;
+		color: #E07000;
+		cursor: pointer;
+	}
+	.bottom{
+		width: 150px!important;
+	}
+	.bottom input{
+		width: 60px;
+	}
+	.innerHtml .grid2-wrap-main {
+		margin-bottom: 20px;
+	}
+	.tips-highlight,.tips-highlight input,.tips-highlight .more-btn{
+		color: red;
+	}
+</style>
+<!--<div class="layout">
+	<div class="grid2-wrap-title">栅格个数:4, 栅格宽度:140px,栅格间距:16px</div>
+	<div class="grid2-wrap-main">
+		<div class="grid2-wrap">
+			<div class="row">
+				<div class="grid-1 grid-item"><span class="txt">140px</span></div>
+				<div class="grid-1 grid-item r"></div>
+				<div class="grid-1 grid-item r"></div>
+				<div class="grid-1 grid-item r grid-fixed"></div>
+				<div class="sp"></div>
+			</div>
+			<div class="row">
+				<div class="grid-2 grid-item"><span class="txt">296px</span></div>
+				<div class="grid-1 grid-item r"></div>
+				<div class="grid-1 grid-item r grid-fixed"></div>
+				<div class="sp"></div>
+			</div>
+			<div class="row">
+				<div class="grid-3 grid-item"><span class="txt">452px</span></div>
+				<div class="grid-1 grid-item r grid-fixed"></div>
+				<div class="sp"></div>
+			</div>
+			<div class="row">
+				<div class="grid-4 grid-item grid-fixed"><span class="txt">608px</span></div>
+				<div class="sp"></div>
+			</div>
+		</div>
+	</div>
+</div>-->
+<!--新增加栅格系统模板 end-->
+
+<script type="text/javascript">
+jQuery(function($) {
+	$("#submit").click(function() {
+		var webWidth = $("#webWidth").val();
+		var columnsWidth = $("#columnsWidth").val();
+		var columnsNumber = $("#columnsNumber").val();
+		var gutterWidth = $("#gutterWidth").val();
+		$("#box").html("loading……");
+		if ($("#columnsWidth").hasClass("on")) {
+			countColumns(webWidth, columnsWidth, gutterWidth);
+			localStorage.setItem("countColumns", webWidth + "|" + columnsWidth + "|" + gutterWidth);
+			localStorage.removeItem("countColumnsNumber");
+		} else {
+			countColumnsNumber(webWidth, columnsNumber, gutterWidth);
+			localStorage.setItem("countColumnsNumber", webWidth + "|" + columnsNumber + "|" + gutterWidth);
+			localStorage.removeItem("countColumns");
+		}
+	});
+
+	var strCountColumns = localStorage.getItem("countColumns");
+	var strCountColumnsNumber = localStorage.getItem("countColumnsNumber");
+	if (strCountColumns) {
+		var strArr = strCountColumns.split("|");
+		countColumns(strArr[0], strArr[1], strArr[2]);
+		$("#webWidth").val(strArr[0]);
+		$("#columnsWidth").addClass("on").val(strArr[1]);
+		$("#gutterWidth").val(strArr[2]);
+	}
+
+	if (strCountColumnsNumber) {
+		var strArr = strCountColumnsNumber.split("|");
+		countColumnsNumber(strArr[0], strArr[1], strArr[2]);
+		$("#webWidth").val(strArr[0]);
+		$("#columnsNumber").addClass("on").val(strArr[1]);
+		$("#gutterWidth").val(strArr[2]);
+	}
+
+	$("#columnsWidth").on("focus", function() {
+		$("#columnsNumber").removeClass("on").val(0);
+		$(this).addClass("on");
+	});
+	$("#columnsNumber").on("focus", function() {
+		$("#columnsWidth").removeClass("on").val(0);
+		$(this).addClass("on");
+	});
+
+	$(document).keydown(function(e) {
+		if (e.keyCode == 13) {
+			$("#submit").trigger("click");
+			return false;
+		}
+	});
+})
+
+function countColumns(webWidth, columnsWidth, gutterWidth) {
+	var webWidth = webWidth;
+	var columnsWidth = columnsWidth;
+	var gutterWidth = gutterWidth;
+	var oneGutterWidth = gutterWidth / 2;
+	var str = "";
+
+	for (var i = 1; i <= 36; i++) {
+		for (var k = 0; k <= webWidth; k++) {
+			if (i * columnsWidth + (i - 1) * k == webWidth - gutterWidth) {
+				if (columnsWidth >= k) {
+					var className = "";
+					if(k == gutterWidth/2) {
+						className = "tips-highlight";
+					}
+					str += '<p class="tips '+className+'"><span>列宽: ' + columnsWidth + '</span><span>间距:  ' + k + '</span><span>列数: ' + i + '</span><span>留白等宽: ' + gutterWidth/2 + '</span><span>总宽: ' + webWidth + '</span><span class="bottom">底部间距:<input type="text" value="'+k+'"></span><span class="more-btn" onclick="getMoreHtml(this,'+i+','+columnsWidth+','+k+','+webWidth+','+(webWidth-gutterWidth)+')">布局展示</span></p>';
+					str += '<div class="grid fn-clear" style="width:' + webWidth + 'px;"><div class="gutter_outer" style="width:' + oneGutterWidth + 'px;"></div>';
+					for (var n = 1; n <= i; n++) {
+						if (n < i) {
+							str += '<div class="column" style="width:' + columnsWidth + 'px;"></div><div class="gutter" style="width:' + k + 'px;"></div>';
+						} else {
+							str += '<div class="column" style="width:' + columnsWidth + 'px;"></div>';
+						}
+					}
+					str += '<div class="gutter_outer" style="width:' + oneGutterWidth + 'px;"></div></div><div class="innerHtml"></div>';
+				}
+				if (i == 1 && k == 0) {
+					break;
+				}
+			}
+		}
+	}
+	$("#box").html(str);
+	if ($("#box").html() == "") {
+		$("#box").html("<p>- -! 算不出任何东西,试一试修改各项的值! 友情提示: 算出来的值,只有列宽的值大于等于间距才是对的哦！</p>");
+		return false;
+	}
+}
+
+function countColumnsNumber(webWidth, columnsNumber, gutterWidth) {
+	var webWidth = webWidth;
+	var columnsNumber = columnsNumber;
+	var gutterWidth = gutterWidth;
+	var oneGutterWidth = gutterWidth / 2;
+	var str = "";
+
+	for (var i = 0; i <= webWidth; i++) {
+		for (var k = 0; k <= webWidth; k++) {
+			if (columnsNumber * i + (columnsNumber - 1) * k == webWidth - gutterWidth) {
+				if (i >= k) {
+					var className = "";
+					if(k == gutterWidth/2) {
+						className = "tips-highlight";
+					}
+					str += '<p class="tips '+className+'"><span>列宽: ' + i + '</span><span>间距:  ' + k + '</span><span>列数: ' + columnsNumber + '</span><span>留白等宽: ' + gutterWidth/2 + '</span><span>总宽: ' + webWidth + '</span><span class="bottom">底部间距:<input type="text" value="'+k+'"></span><span class="more-btn"  onclick="getMoreHtml(this,'+columnsNumber+','+i+','+k+','+webWidth+','+(webWidth-gutterWidth)+')">布局展示</span></p>';
+					str += '<div class="grid fn-clear" style="width:' + webWidth + 'px;"><div class="gutter_outer" style="width:' + oneGutterWidth + 'px;"></div>';
+					for (var n = 1; n <= columnsNumber; n++) {
+						if (n < columnsNumber) {
+							str += '<div class="column" style="width:' + i + 'px;"></div><div class="gutter" style="width:' + k + 'px;"></div>';
+						} else {
+							str += '<div class="column" style="width:' + i + 'px;"></div>';
+						}
+					}
+					str += '<div class="gutter_outer" style="width:' + oneGutterWidth + 'px;"></div></div><div class="innerHtml"></div>';
+				}
+				if (columnsNumber == 1 && k == 0) {
+					break;
+				}
+			}
+		}
+	}
+	$("#box").html(str);
+	if ($("#box").html() == "") {
+		$("#box").html("<p>- -! 算不出任何东西,试一试修改各项的值! 友情提示: 算出来的值,只有列宽的值大于等于间距才是对的哦！</p>");
+		return false;
+	}
+}
+
+
+//获取栅格系统方法
+/**
+ * @param {rows} 栅格模块的个数
+ * @param {colW} 栅格模块的宽度
+ * @param {padding} 栅格模块的间距
+ * @param {allW} 栅格模块的总宽度
+ * @param {allW2} 栅格模块的宽度
+ **/
+function getMoreHtml(obj,rows,colW,padding,allW,allW2){
+	/*var allHtml = '<div class="grid2-wrap">';
+	var rows = rows || 1;
+	var col = rows;
+	for (var i = 1; i <= rows; i++) {
+		var html = '<div class="row">';
+		for (var j = 1; j <= col + 1 - i; j++) {
+			if (j == 1) {
+				if (i != rows) {
+					html += '<div class="grid-' + i + ' grid-item"><span class="txt">140px</span></div>';
+				} else {
+					html += '<div class="grid-' + i + ' grid-item grid-fixed"><span class="txt">140px</span></div>';
+				}
+			} else if (j !== 1) {
+				if (j != col + 1 - i) {
+					html += '<div class="grid-1 grid-item r"></div>';
+				} else {
+					html += '<div class="grid-1 grid-item r grid-fixed"></div>';
+				}
+			}
+		}
+		html += '<div class="sp"></div></div>';
+		allHtml += html;
+	}
+	allHtml += '</div>';*/
+
+	var rows = rows || 1;
+	var col = rows;
+	var colW = colW || 640;
+	var marginRight = padding || 0;
+	var allW = allW || 640;
+	var allW2 = allW2 || 608;
+	var allHtml = '<div class="grid2-wrap-title">栅格个数:' + rows + ', 栅格宽度:' + colW + 'px,栅格间距:' + marginRight + 'px</div><div class="grid2-wrap-main" style="width: ' + allW + 'px"><div class="grid2-wrap" style="width: ' + allW2 + 'px">';
+	var bottomH = Number($(obj).siblings('.bottom').find('input').val()) || 10;
+	for (var i = 1; i <= rows; i++) {
+		var html = '<div class="row">';
+		for (var j = 1; j <= col + 1 - i; j++) {
+			if (j == 1) {
+				var tempW = Number(colW * i + (i - 1) * marginRight);
+				if (i != rows) {
+					html += '<div class="grid-' + i + ' grid-item" style="width:' + tempW + 'px;margin-right:' + marginRight + 'px"><span class="txt">' + tempW + 'px</span></div>';
+				} else {
+					html += '<div class="grid-' + i + ' grid-item grid-fixed" style="width:' + tempW + 'px"><span class="txt">' + tempW + 'px</span></div>';
+				}
+			} else if (j !== 1) {
+				if (j != col + 1 - i) {
+					html += '<div class="grid-1 grid-item r" style="width:' + colW + 'px;margin-right:' + marginRight + 'px"></div>';
+				} else {
+					html += '<div class="grid-1 grid-item r grid-fixed" style="width:' + colW + 'px"></div>';
+				}
+			}
+		}
+		//html += '<div class="sp" style="height:' + marginRight + 'px"></div></div>';
+		if (i != rows) {
+			html += '<div class="sp" style="height:' + bottomH + 'px"></div></div>';
+		}
+		allHtml += html;
+	}
+	allHtml += '</div></div>';
+	//grid-xxx的样式最好通过计算出来的但是我没有去修改，这里为了实现展示 用js计算，源码保留
+	if ($(obj).parent().next('.grid').next('.innerHtml').html()) {
+		$(obj).parent().next('.grid').next('.innerHtml').html("");
+	} else {
+		$(obj).parent().next('.grid').next('.innerHtml').html(allHtml);
+	}
+}
+</script>
+</body>
+</html>
